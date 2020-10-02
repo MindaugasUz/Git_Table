@@ -1,11 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Github Table
-    This project is build using CRA boilerplate together with TypeScript, Material-UI and styled components. 
 
-### Run App 
+    This project is build using CRA boilerplate together with TypeScript, Material-UI and styled components.
 
-    in your terminal type 
+### Run App
+
+    in your terminal type
     `docker-compose up`
 
 ### `npm test`

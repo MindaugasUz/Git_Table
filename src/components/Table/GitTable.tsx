@@ -39,14 +39,14 @@ const GitTable = () => {
 
   interface Row {
     node: {
-      name: String,
+      name: String;
       stargazers: {
-        totalCount: number
-      }
+        totalCount: number;
+      };
       forks: {
-        totalCount: number
-      }
-    }
+        totalCount: number;
+      };
+    };
   }
 
   return (
