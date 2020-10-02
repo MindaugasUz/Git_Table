@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Run App 
 
     in your terminal type 
-    ``` docker-compose up ```
+    `docker-compose up`
 
 ### `npm test`
 
