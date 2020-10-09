@@ -2,12 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Github Table
 
-    This project is build using CRA boilerplate together with TypeScript, Material-UI and styled components.
+    This project is build using CRA boilerplate together with TypeScript, GraphQL, Material-UI and styled components.
 
-### Run App
+### To Run the App
 
-    in your terminal type
-    `docker-compose up`
+    You need to generate github api key (https://github.com/settings/tokens/new) and paste it in your .env variable  like so:
+
+    REACT_APP_GITHUB_API_KEY="your api key here"
+
+    After that run `npm install` to get all the packages and `npm start` or `docker-compose up`
 
 ### `npm test`
 

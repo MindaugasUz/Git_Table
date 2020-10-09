@@ -1,52 +1,52 @@
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import { StyledTableCell, StyledTableRow } from "./utils";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import styled from "styled-components";
-import { useQuery } from "@apollo/react-hooks";
-import { GET_GIT_REPOS } from "./GitTable.gql";
+import React, { useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import { StyledTableCell, StyledTableRow } from './utils'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import styled from 'styled-components'
+import { useQuery } from '@apollo/react-hooks'
+import { GET_GIT_REPOS } from './GitTable.gql'
 
 const GitTable = () => {
-  const classes = useStyles();
-  const [inputString, setInputString] = useState("");
-  const [queryTerm, setQueryTerm] = useState("react");
+  const classes = useStyles()
+  const [inputString, setInputString] = useState('')
+  const [queryTerm, setQueryTerm] = useState('react')
 
   const { loading, error, data } = useQuery(GET_GIT_REPOS, {
     variables: {
       queryString: queryTerm,
     },
-  });
+  })
 
   if (loading) {
-    return <LoadingMessage>Loading...</LoadingMessage>;
+    return <LoadingMessage>Loading...</LoadingMessage>
   }
   if (error || !data) {
-    return <LoadingMessage>Error...</LoadingMessage>;
+    return <LoadingMessage>Error... {error?.message}</LoadingMessage>
   }
 
-  const rows = data.search.edges;
+  const rows = data.search.edges
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputString(event.target.value);
-  };
+    setInputString(event.target.value)
+  }
 
   const onSubmit = () => {
-    setQueryTerm(inputString);
-  };
+    setQueryTerm(inputString)
+  }
 
   interface Row {
     node: {
-      name: String;
+      name: String
       stargazers: {
-        totalCount: number;
-      };
+        totalCount: number
+      }
       forks: {
-        totalCount: number;
-      };
-    };
+        totalCount: number
+      }
+    }
   }
 
   return (
@@ -63,15 +63,15 @@ const GitTable = () => {
               <StyledTableCell align="right">Name</StyledTableCell>
               <StyledTableCell align="right">
                 <span role="img" aria-label="stars">
-                  {" "}
+                  {' '}
                   🌟
-                </span>{" "}
+                </span>{' '}
                 Stars
               </StyledTableCell>
               <StyledTableCell align="right">
                 <span role="img" aria-label="forks">
                   🍴
-                </span>{" "}
+                </span>{' '}
                 Forks
               </StyledTableCell>
             </TableRow>
@@ -92,10 +92,10 @@ const GitTable = () => {
         </Table>
       </div>
     </TableWrap>
-  );
-};
+  )
+}
 
-export default GitTable;
+export default GitTable
 
 const TableWrap = styled.div`
   padding: 50px 0;
@@ -103,7 +103,7 @@ const TableWrap = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
+`
 
 const LoadingMessage = styled.div`
   width: 100%;
@@ -112,11 +112,11 @@ const LoadingMessage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 
 const useStyles = makeStyles({
   table: {
-    width: "500px",
-    outline: "1px solid grey",
+    width: '500px',
+    outline: '1px solid grey',
   },
-});
+})
